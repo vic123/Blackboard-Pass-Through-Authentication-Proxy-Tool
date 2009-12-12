@@ -1,0 +1,29 @@
+Application's interface points are pta_proxy\Admin\Login.aspx (for standalone deployment), pta_proxy\Admin\Register.aspx (proxy registration and configuration), Remote configure (pta_proxy\Actions\Config.aspx), Reregister (pta_proxy\Actions\ReRegister.aspx) and proxy edit/properties page provided entirely by Blackboard. As supplementary points of control may be specified Blackboard System Admin/Building Blocks/Building Blocks/Proxy Tools/"Manage Global Properties" and System Admin/Building Blocks/Web Services where general properties of Blackboard web interfaces are set and System Admin/Communities/Tabs and Modules/Tool Panel where user_tool link can be made visible in the Tools module of My Institution page.
+
+*** pta_proxy\Admin\Register.aspx
+Allows:
+a) Select existing registration from dropdown list and preview registration XML or register it.
+b) Insert/Edit/Delete registrations in GridView. Notes on data fields and editing tips are placed directly on the Register.aspx page
+c) Load and save XML representation of links and their processing logic for selected GridView record
+d) Create pta_admin user and modify its password (intended to be used only for standalone deployments)
+Status on result of button clicks is displayed next to each button after performing click action. In case of exception pta_proxy\AppCode\Idla.PtaProxy\GlobalErrorHandler.cs may be activated error message and/or stack trace should be examined for error reasons.
+
+*** Remote configure 
+Gives possibility to edit XML of links and their processing logic for Blackboard Administrator. Activated from context menu of activated proxy tool on System Admin/Building Blocks/Building Blocks/Proxy Tools page.
+Exception information shows up in case of error, otherwise it would be almost impossible to discover possible edit mistakes in XML.
+
+*** Reregister 
+Activated from the same place as Remote configure. It is the fastest way to update any modified link paths or add/remove links exposed by Blackboard. Otherwise proxy has to be deleted from this page and registered from Register.aspx page. In both cases proxy activation remains to be additional necessary step. Reregistration preserves old Shared Secret and proxy GUID.
+
+*** proxy edit/properties page
+Available to proxy in any state from same context menu as Remote Configure or Reregister. Its most important function - modifying of proxy state. State should be set to "Available" after each new registration or reregistration, otherwise neither links nor custom actions in context menu are shown. 
+SSL requirements in direction BB->PTA (including both actions and links) may be set here as well. 
+http://www.edugarage.com/display/BBDN/Baseurl states that "specifying the https URL forces the proxy tool into using SSL", but according to tests links and remote configure action use Https only when this check was set. But other actions seem really to use Https (state change action fails when there is no web server on SSL port) if https link was specified. 
+
+*** Manage Global Properties
+Password required for initial proxy registration may be set here
+
+***Web Services
+PtaProxy registration is performed via Context.WS web service, which must be set as Available here.
+SSL requirements in direction PTA->BB (initial registration and in the future possibly additional calls to web services) can be set here too.
+

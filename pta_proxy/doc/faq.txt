@@ -1,0 +1,25 @@
+General note: pta_proxy.log is written to application App_Data folder, it should be checked for details on errors and unexpected processing. It is configured with bin\pta_proxy.log4net config file. 
+
+
+1.
+Q: If I want to setup some links in our test blackboard server, what should I do?
+A: If you've chose sample Blackboard registration with code "TestServerPtaProxy" where you "changed the Bb server in the database to "www.your_test_bb_server.com"" then you already should have a bunch of links registered in all possible areas. Most of them are concentrated in "control panel/class tools". Ñurrent sample data has 3 Blackboard registrations defined - "sdf sdfa" is absolutely fake, just takes some place in test data, "TestServerPtaProxy" is the one with most test links defined, "TestServerPtaProxy2" is the one that defines couple of "alternatively" handled links to same PtaProxy instance. Links with names starting with "Pta" should be available in "control panel/class tools", Class/Tools (upper menu), System Admin/Tools and Utilities and My Institution/Tools (the last requires additional configuration).
+
+
+2.
+Q: Why I'm getting "Your request could not be processed." errors or login screen when trying to follow sample links?
+A: All links redirect to the same page - it should be located/names as TestRedirect\InfoTest.aspx at application root - i.e. if it is "integrated" deployment then it has to be copied from pta_proxy subfolder application root in order for getting of any results from clicking on links.
+
+
+3.
+Q: Now I am a little confused at the next steps?
+A: In most common case mapping from Blackboard user id to user name of your application has to be provided. Most straightforward/universal ways are using "SProcCall" ParamInputType of Param table that allows invocation of stored procedure that should return a value that later may be manipulated as assignment of Forms cookie or whatever else storing user_name in your application, or in case of integrated deployment to use "Server.Transfer" mechanism of ParamOutputType field for absolutely custom implementation of this mapping with means of ASP.NET - transfer preserves all form parameters passed from Blackboard.
+
+4.
+Q: How the actual BlackBoard user will be recognized once at the web app as a user in the web app's database?
+A: Blackboard supplies user_id of currently logged user. PtaProxy currently does not provide capability for obtaining of user name. By this time it was thought that web app should have mapping of user id to its own user name somewhere. user_id is provided as userid form parameter of Blackboard request ("Form" type of Param record can be used).
+
+5
+Q: ERROR [1] Idla.PtaProxy.WSCall.DoCall():  - System.Web.Services.Protocols.SoapException: WSDoAllReceiver: security processing failed in pta_proxy.log upon attempt of registration?
+A: Can be caused by non-synced timestamp (correct time according to timezone). Did not detect any logged records on Blackboard side upon such situation. Trying to invoke PtaProxy action or link (in case of existence of registered PtaProxy instance) may fire and log timestamp error condition on PtaProxy side.
+

@@ -1,0 +1,238 @@
+
+I. Tests in VS2008 Environment:
+-------------------------------
+
+pta_proxy\Admin\Register.aspx 
+1. Open pta_proxy\Admin\Register.aspx
+2. Select existing Registration at Blackboard Server and check loading of XML data of BBMenuLink and Param tables
+3. Edit and modify every value of Blackboard Registration grid
+4. Make minor mofidification to XML data and Save it.
+5. Follow steps defining "way to copy sample menu link definitions" to create new Registration.
+
+
+
+Registration:
+1. Select non-first BB URL in dropdown list, default options (BBoardHTTPSchema=BOTH,  RegisterHttpURL=Y, RegisterHttpsURL=Y  RegisterS2SURL=N, RegisterActions=N). 
+2. Register with 
+a) correct ñertificate 
+b) bad BB certificate
+c) correct ñertificate and Content.WS SSL Required = Yes
+d) missing ñertificate and Content.WS SSL Required = Yes (security error simulation)
+	System.Web.Services.Protocols.SoapException Error Message: [WSFW006]Rejecting webservice call: request (Context.WS.initialize) must be over https
+e) missing ñertificate and Content.WS SSL Required = No and set proxy tool registration password
+f) missing ñertificate and Content.WS SSL Required = No and set proxy tool registration password, and wrong password provided (error condition)
+	ERROR: ContextWS.registerTool() failed with following error(s): BB Falire Err.#0: Invalid tool registration password supplied (123);
+g) registrer anyhow and make proxy available - check that no action is really fired (ProxyState in registration data should remain 
+h) register second instance of PtaProxy under different ProxyCode (program name).
+
+
+
+Actions:
+(using MS SOAP Toolkit/Trace Utility for port forwarding to localhost). BBoardHTTPSchema=BOTH,  RegisterHttpURL=Y, RegisterHttpsURL=N (Blackboard tries only Https if no server is available, while it is not possible to configure VS2008 internal web server for Https),  RegisterS2SURL=N, RegisterActions=Y. 
+1. State change 
+2. Config
+3. Reregister
+4. Remove.
+5. Ping happening before following of link.
+6. Save XML from config action
+
+
+
+Various link types:
+1. course_tool - pta_proxy\test\091203\GroupTool&Tool.jpg 
+2. user_tool - pta_proxy\test\091203\UserTool_1_Add.jpg and UserTool_2.jpg 
+3. tool - pta_proxy\test\091203\GroupTool&Tool.jpg
+4. group_tool - pta_proxy\test\091203\GroupTool&Tool.jpg
+5. system_tool - pta_proxy\test\091203\SystemTool.jpg 
+6. second system_tool with another instance of PtaProxy.
+7. Check that non-enabled link "PTA Course Tool #4 - Disabled link, should not be shown" is not visible.
+8. Link redirection for different than Administrator user.
+
+
+
+Vulnerability of proxy configuration or system_tool links security by regular BB users having access to links of same proxy tool.
+Note: With IE6, to disable JavaScript you have to change the security settings. You'll find the setting under Tools/Internet Options/Security Tab/Custom Level/Disable Active scripting (at the end of the list). 
+Note2: Instead of disabling of JavaScript it should be possible to "Turn On User Acknowledgement Message" in proxy settings. 
+
+- Set enough MacLifetimeInMinutes in PtaProxy web.config
+- Login as Administrator
+- Go to System Admin or Proxy Tools page 
+- Disable (prompt) JavaScript
+- Click on the system_tool, configuration or reregistration link, cancel running of JavaScript
+- Save page (used "view source" on right mouse click and then saving from text editor (sample - pta_proxy\test\091207_compromise\proxyLauncher[1]_Config_ForAdmin.htm).  
+Enable  JavaScript (it was impossible to enter password on Login with Javascript set to "prompt")
+- Login as some Student
+- Go to class/tools
+- Disable JavaScript
+- Click on some link exposed by PtaProxy, cancel javascript
+- Save page (sample pta_proxy\test\091207_compromise\proxyLauncher[1]_group_tool1_Transfer.aspx_ForStudent_ForConfig.htm). Be sure not to press continue button this time because otherwise you'll be blocked by duplicated nonce in second access attempt below.
+- Edit saved page by substituting form action link with the one from the page saved by Administrator.
+- Open edited page and click continue
+- You should get access to system_tool link and to recieve an error sampled below in log file when accessing PtaProxy configure or reregister. 
+Sample logged error:
+ASP.actions_config_aspx.Page_Load():  - Idla.PtaProxy.PtaException: Access is allowed only for Blackboard Administrator (userid = "_1_1"). Current user_id: _8_1
+
+
+
+Test checking of duplicated nonce:
+Disable javascript and open some PtaProxy link. Cancel running of Javascript, save page, click continue, open saved page and click continue - logged error should be like the following:
+Idla.PtaProxy.PtaHttpHandler.ProcessRequest():  - Idla.PtaProxy.PtaException: Invalid duplicated Nonce. nonce: c33a171a52d846e28cc60becc47d0b8e
+
+
+
+Debug nonce cleanup process
+web.config - 
+<add key="MacLifetimeInMinutes" value="2"/>
+<add key="NonceCleanupCount" value="4"/>
+Set breakpoints at RequestValidator.cs, knownNonces.Add(nonce, proxy_millis); and Hashtable non_expired_nonces = new Hashtable();
+Collect nonces with millis and local time:
+"af573d82ced548ae8be8bc13f62648f4" 1260275901536 {08.12.2009 12:38:21}
+"e41320d991894dee98dd6964bc903ea6" 1260275966302 {08.12.2009 12:39:26}
+"b7405bed5fb644e0a57a9c8c0bb48cad" 1260276012973 {08.12.2009 12:40:12}
+"695258a96e3c45f19460277c6c20dd07" 1260276037895 {08.12.2009 12:40:37}
+"f526404f063f4ea1a5c69b1143c2864a" 1260276102567 {08.12.2009 12:41:42}
+
+Collect nonces that were added/omitted from saving to new Hashtable:
+proxy millis: 1260276102567
++ "f526404f063f4ea1a5c69b1143c2864a" 1260276102567
+- "e41320d991894dee98dd6964bc903ea6" 1260275966302
+- "af573d82ced548ae8be8bc13f62648f4" 1260275901536
++ "b7405bed5fb644e0a57a9c8c0bb48cad" 1260276012973
++ "695258a96e3c45f19460277c6c20dd07" 1260276037895
+
+
+
+II. General tests in IIS 5.1 (XP professional) environment
+----------------------------------------------------------
+
+1.
+Effective access restrictions to application folders structure
+http://localhost:4436/pta_proxy/Admin/Register_none.aspx - login page
+http://localhost:4436/pta_proxy/Admin/ - You are not authorized to view this page
+http://localhost:4436/pta_proxy/Admin/sdfsdf/asdf.aspx - login page
+http://localhost:4436/pta_proxy/Admin/sdjfh.txt - The page cannot be found
+http://localhost:4436/pta_proxy/test-cases.txt - shows up (!!)
+http://vicw2ks.com:4436/pta_proxy/test-cases.txt - shows up (!!) - discussed at http://www.mikesdotnetting.com/Article/122/Simple-File-Download-Protection-with-ASP.NET . Excluded txt files from the project and deployment.
+http://vicw2ks.com:4436/pta_proxy/Web.config - login page
+http://localhost:4436/pta_proxy/Actions/Config.aspx - Your request could not be processed. 
+http://localhost:4436/pta_proxy/Actions/Config123.aspx - Idla.PtaProxy.GlobalErrorHandler (shows stack trace, but assuming this quite standard and not exposing any confidential info)
+http://localhost:4436/pta_proxy/Actions/ - You are not authorized to view this page
+http://localhost:4436/pta_proxy/App_Data/pta_proxy.log - The page cannot be found
+http://localhost:4436/pta_proxy/App_Data/users.xml - The page cannot be found
+http://localhost:4436/pta_proxy/bin/log4net.xml - The page cannot be displayed 
+http://localhost:4436/pta_proxy/ErrorPages/PtaSampleCustomErrPage.aspx - shows error page, assumed not to be unsafe
+http://localhost:4436/pta_proxy/img/test_icon_12x12.jpg - shows image, assumed not to be unsafe
+http://localhost:4436/pta_proxy/pta/Web.config - Your request could not be processed.
+http://localhost:4436/pta_proxy/sql/data.sql - shows sql (!!). Excluded sql\ files from the project and deployment.
+http://localhost:4436/pta_proxy/TestRedirect/InfoTest.aspx - redirects to login page
+
+
+2. 
+HTTPS handling and fail back to HTTP
+a. No security certificates installed. RegisterHttpURL=Y RegisterHttpsURL=N RegisterS2SURL=N RegisterActions=Y BBoardHTTPSchema=BOTH
+Require SSL for communication with this proxy tool=N
+Context.WS  SSL Required=N
+
+Register - success
+State change - success
+Remote configure - success
+
+RegisterHttpsURL=Y
+Register - success
+State change - success
+
+Install server certificate at PtaProxy, but modify SSL port not to correspond to registered at Blackboard.
+Register - success
+State change - Error: Failed to save changes. Proxy Tool server may not be available.
+
+Install server certificate at Blackboard, but modify SSL port not to correspond to BBoardHTTPSPort.
+Register - success
+
+Fix Https ports on PtaProxy and Blackboard - i.e. correct SSL configuration
+Require SSL for communication with this proxy tool=Y (set after registration)
+Context.WS  SSL Required=Y
+Register - success
+State change - success
+Remote configure - success, https://vicw2ks.com:4438/pta_proxy/Actions/Config.aspx
+Follow defined link - success
+
+Require SSL for communication with this proxy tool=N
+Remote configure - failed - http url instead of https, 
+http://vicw2ks.com:4436/pta_proxy/Actions/Config.aspx
+
+RegisterS2SURL=Y, set PtaProxyServerToServerURL value to non-listened by IIS port
+Reregistration - success
+State change to available - fail (expected - PtaProxyServerToServerURL was used and was not found)
+Fix PtaProxyServerToServerURL, delete, register, state change to available - success
+
+
+III. Sample links processing in IIS 
+--------------------------------------
+
+Note: under VS2008 web server Session variables did not preserve after redirection of user browser.
+Resulting pages are saved in pta_proxy\test\091210\.
+They demonstrate what kind of parameters can be passed/preserved with use of one or another approach of user redirection.
+
+1.
+PTA Course Tool #1
+ - almost basic test, including however most important steps - constructing of redirection URL, authentication with FormsAuthentication.SetAuthCookie and redirection by setting of Location header and status code.
+
+2.
+PTA Course Tool #2 - Full Test
+ - not exactly full (some processing options are mutually exclusive like redirect vs. transfer), but covering most part of configurable functionality. 
+
+3.
+PTA Course Tool #3 - SProc Raise Test
+ - an example of custom error raised from stored procedure, handled with standard text of failed request and link for return to Blackboard, and then Server.Transfer()ed to custom error page if BBoard.OnErrorServerTransfer is not NULL. It shows to user uninformational message and logs details to App_Data\pta_proxy.log
+
+4. 
+Disabled link 
+ - BBLinkPath="course_tool4_disbled_link.aspx" BBLinkType="course_tool" BBLinkName="PTA Course Tool #4 - Disabled link, should not be shown" Enabled="N"
+
+5.
+PTA Course Tool #5 - Server Transfer
+ - An example of server transfer processing. An important point here is that it is not necessary authentication cookie to be set for accessing of restricted pages and that all form parameters are preserved. URL in user's browser does not change. Can be performed only inside same application, i.e. in case of integrated deployment of PtaProxy.
+
+6
+PTA Course Tool #6 - Post Redirect
+ - uses Status code 307 that is not handled very well by different browsers. Logic of link does not set authentication cookie and additionally tests appearance of login screen (user should not be logged into PtaProxy or hosting application). After first login cached cookie will be used and this produces different results - initial form parameters are preserved only in second case. 
+
+http://ilia.ws/archives/152-Cross-Domain-POST-Redirection.html :
+Alas, unlike the Opera and FireFox developers, the IE developers have never read the spec, and even the latest, most secure IE7 will redirect the POST request from domain A to domain B without any warnings or confirmation dialogs! Safari also acts in an interesting manner, while it does not raise a confirmation dialog and performs the redirect, it throws away the POST data, effectively changing 307 redirect into the more common 302. 
+
+
+7.
+PTA Course Tool #7 - Post GenForm
+ - encodes form post parameters into the body of response, also includes javascript for autopost and button if javascript is disabled. This is the most practical post redirection implementation found in the web.
+It also does not set authentication cookie and was tested with passing of login screen and without. Login screen clears Form paramters in this test too.
+
+8. 
+PTA Course Tool #8 - .ascx extension 
+ - unsuccessful attempt to handle .ascx extension, resulted in "The page cannot be found" 
+
+9. 
+PTA Course Tool #9 - cyrillic text: ?????
+ - unfinished test, the idea was to see if it is possible to miss "bundle" handling and still be possible to define links on different languages, needs adding cyrillic support in database and on Test server
+
+10. 
+PTA Group Tool #1 - Transfer
+ - sample group tool. Also tests custom icon. pta_proxy\test\091203_screenshots contain screenshots of this and remaining links noted below
+
+12. 
+PTA System Tool #1 - Transfer
+
+13.
+PTA Tool #1 - Transfer
+
+14.
+PTA User Tool #1 - Transfer
+ - System Admin/Communities/Tabs and Modules/Tool Panel is where user_tool link can be made visible in the Tools module of My Institution page. This however has to be redone after each PtaProxy reregistration. Additionally tests custom icon for user tool.
+
+15. 
+PTA System Tool #1 - Pta2, Transfer 
+ - system tool registred by second PtaProxy instance, the one with TestServerPtaProxy2 code. 
+
+16.
+PTA2 Course Tool #1 - SProc Raise Test without custom error page
+
+

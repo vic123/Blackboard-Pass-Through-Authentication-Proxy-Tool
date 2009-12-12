@@ -1,0 +1,57 @@
+
+
+
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <base href="http://85.130.35.103:8085/ws.sample.proxyserverEclipse/">
+    <title>Configure Proxy Tool</title>
+	<meta http-equiv="pragma" content="no-cache">
+	<meta http-equiv="cache-control" content="no-cache">
+	<meta http-equiv="expires" content="0">    
+  </head>
+  
+  <body>
+    
+
+
+
+    <div class="actionBar">
+    This is the proxy tool configuration page - linked to via the 'remote configure' in the Academic Suite UI<br>
+    </div>
+    Do we have system.webservices.MODIFY? false<br>
+    GUID: eb73a0fcd8694600aa8047fc346f8cba<br>
+    Your secret is f05718e3000d45f7986bafbc33fae628 but I shouldn't be printing this in reality...<br>
+    Userid: _8_1<br>
+    Role: COURSE:STUDENT<br>
+    TC Role: STUDENT<br>
+    Your Locale is en_US_k12<br>
+    Your UI direction is ltr<br>
+    <br>
+    <script language="javascript">
+    function deleteKey(key) {
+        configForm.key.value = key;
+        configForm.deleteflag.value= 'YES';
+        configForm.submit();
+    }
+    </script>
+    <form name="configForm" action="saveConfig" method="post">
+    
+    
+
+    
+
+    <input type="hidden" name="deleteflag" value=""/>
+    Set a new system-level tool setting:<br>
+    Key:    <input type="text" name="key" size="80" /><br>
+    Value:  <input type="text" name="value" size="80" /><br>
+    
+    <input type="hidden" name="ourguid" value="eb73a0fcd8694600aa8047fc346f8cba">
+    <input type="hidden" name="fullreturnurl" value="http://174.129.97.205:80/webapps/blackboard/course/course_button.jsp?course_id=_5_1&family=course_tools_area"/>
+    
+    <button type="submit">Save</button>&nbsp;
+    <button type="button" onclick="document.location='http://174.129.97.205:80/webapps/blackboard/course/course_button.jsp?course_id=_5_1&family=course_tools_area'">Return to AS</button>
+    </form>
+  </body>
+</html>

@@ -1,0 +1,32 @@
+2009-12-08 12:03:17,520 250 DEBUG [4] Idla.PtaProxy.GlobalErrorHandler.Init():  - Method entered
+2009-12-08 12:03:17,677 406 INFO [4] Idla.PtaProxy.GlobalErrorHandler.Init():  - Instantiated
+2009-12-08 12:03:43,411 26140 DEBUG [4] Idla.PtaProxy.GlobalErrorHandler.OnError():  - Method entered
+2009-12-08 12:03:43,411 26140 DEBUG [4] Idla.PtaProxy.GlobalErrorHandler.OnError():  - Entered GlobalErrorHandler.OnError
+2009-12-08 12:03:43,458 26187 DEBUG [4] Idla.PtaProxy.GlobalErrorHandler.OnError():  - HttpContext.Current.Request.FilePath: /pta_proxy/Admin/Register.aspx
+2009-12-08 12:03:43,458 26187 DEBUG [4] Idla.PtaProxy.GlobalErrorHandler.OnError():  - HttpContext.Current.Request.ApplicationPath: /pta_proxy
+2009-12-08 12:09:15,192 171 DEBUG [4] Idla.PtaProxy.GlobalErrorHandler.Init():  - Method entered
+2009-12-08 12:09:15,239 218 INFO [4] Idla.PtaProxy.GlobalErrorHandler.Init():  - Instantiated
+2009-12-08 12:12:37,708 140 DEBUG [4] Idla.PtaProxy.GlobalErrorHandler.Init():  - Method entered
+2009-12-08 12:12:37,755 187 INFO [4] Idla.PtaProxy.GlobalErrorHandler.Init():  - Instantiated
+2009-12-08 12:12:53,333 15765 DEBUG [4] Idla.PtaProxy.GlobalErrorHandler.OnError():  - Method entered
+2009-12-08 12:12:53,333 15765 DEBUG [4] Idla.PtaProxy.GlobalErrorHandler.OnError():  - Entered GlobalErrorHandler.OnError
+2009-12-08 12:12:53,348 15781 DEBUG [4] Idla.PtaProxy.GlobalErrorHandler.OnError():  - HttpContext.Current.Request.FilePath: /pta_proxy/Admin/Register.aspx
+2009-12-08 12:12:53,348 15781 DEBUG [4] Idla.PtaProxy.GlobalErrorHandler.OnError():  - HttpContext.Current.Request.ApplicationPath: /pta_proxy
+2009-12-08 12:13:44,833 125 DEBUG [4] Idla.PtaProxy.GlobalErrorHandler.Init():  - Method entered
+2009-12-08 12:13:44,864 156 INFO [4] Idla.PtaProxy.GlobalErrorHandler.Init():  - Instantiated
+2009-12-08 12:15:09,755 85046 DEBUG [4] Idla.PtaProxy.GlobalErrorHandler.OnError():  - Method entered
+2009-12-08 12:15:09,755 85046 DEBUG [4] Idla.PtaProxy.GlobalErrorHandler.OnError():  - Entered GlobalErrorHandler.OnError
+2009-12-08 12:15:09,770 85062 DEBUG [4] Idla.PtaProxy.GlobalErrorHandler.OnError():  - HttpContext.Current.Request.FilePath: /pta_proxy/Admin/Register.aspx
+2009-12-08 12:15:09,770 85062 DEBUG [4] Idla.PtaProxy.GlobalErrorHandler.OnError():  - HttpContext.Current.Request.ApplicationPath: /pta_proxy
+2009-12-08 12:17:52,520 125 DEBUG [8] Idla.PtaProxy.GlobalErrorHandler.Init():  - Method entered
+2009-12-08 12:17:52,536 140 INFO [8] Idla.PtaProxy.GlobalErrorHandler.Init():  - Instantiated
+2009-12-08 12:18:29,286 36890 DEBUG [8] Idla.PtaProxy.GlobalErrorHandler.OnError():  - Method entered
+2009-12-08 12:18:29,286 36890 DEBUG [8] Idla.PtaProxy.GlobalErrorHandler.OnError():  - Entered GlobalErrorHandler.OnError
+2009-12-08 12:18:29,317 36921 DEBUG [8] Idla.PtaProxy.GlobalErrorHandler.OnError():  - HttpContext.Current.Request.FilePath: /pta_proxy/Admin/Register.aspx
+2009-12-08 12:18:29,317 36921 DEBUG [8] Idla.PtaProxy.GlobalErrorHandler.OnError():  - HttpContext.Current.Request.ApplicationPath: /pta_proxy
+2009-12-08 12:19:53,052 120656 DEBUG [4] Idla.PtaProxy.GlobalErrorHandler.OnError():  - Method entered
+2009-12-08 12:19:53,052 120656 DEBUG [4] Idla.PtaProxy.GlobalErrorHandler.OnError():  - Entered GlobalErrorHandler.OnError
+2009-12-08 12:19:53,052 120656 DEBUG [4] Idla.PtaProxy.GlobalErrorHandler.OnError():  - HttpContext.Current.Request.FilePath: /pta_proxy/Admin/Register.aspx
+2009-12-08 12:19:53,067 120671 DEBUG [4] Idla.PtaProxy.GlobalErrorHandler.OnError():  - HttpContext.Current.Request.ApplicationPath: /pta_proxy
+2009-12-08 12:22:58,567 140 DEBUG [4] Idla.PtaProxy.GlobalErrorHandler.Init():  - Method entered
+2009-12-08 12:22:58,598 171 INFO [4] Idla.PtaProxy.GlobalErrorHandler.Init():  - Instantiated
