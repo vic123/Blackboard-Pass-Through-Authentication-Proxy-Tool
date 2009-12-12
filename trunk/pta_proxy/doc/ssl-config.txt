@@ -1,0 +1,108 @@
+Generation and installation of self-made test certificates.
+===========================================================
+
+
+Certificates that have to be created and their roles
+----------------------------------------------------- 
+
+Root certificate that will be used for signing of next two (RootCert)
+Certificate for Blackboard server (BBCert)
+Certificate for PtaProxy server (PTACert)
+
+In general root certificates for Blackboard and PtaProxy may differ, but in tested scenario single common root certificate is used for simplicity. In places terms of PTARoot and BBRoot will be used to note which of root certificates has to be used in case of separately issued PTACert and BBCert.
+
+It is important to understand that for establishing of SSL only certificate of requested (server-side) server is required.
+
+When PtaProxy performs SSL request, it uses BBCert for validation of Blackboard with RootCert. When Blackboard initiates some action or end user browser is redirected, then PTACert is validated with RootCert. 
+
+BBCert application:
+PtaProxy initial registration ---------> Blackboard 
+(Validates BBCert with RootCert)
+
+PTACert application:
+Blackboard action ----------------------> PtaProxy 
+(Validates PtaCert with RootCert)
+User browser redirection ---------------> PtaProxy 
+(Validates PtaCert with RootCert)
+
+In other words, BBCert is necessary to perform secured calls to Blackboard webservices and PtaCert for handling of secured actions from Blackboard and end-user links redirection.
+
+
+Points of certificate installations
+------------------------------------
+Note1: IE Tools/Properties/Content/Certificates provides access to certificate store of "Current User", certificates installed should work for currently logged user and probably RootCert may be installed there on end-user computers. However during testing "Computer account" certificate store was used everywhere for MS Windows related settings.
+
+Note2: The web server built into VS doesn't not support SSL - http://stackoverflow.com/questions/187593/does-vs2008-built-in-web-server-cassini-support-ssl
+
+
+** RootCert
+ 1. In Trusted Root Certificates/Certificates in Start/Run/MMC certificates plugin for Computer account (MMC_CertificatesPlugin.jpg, MMC_RootCertificate.jpg) on 
+    a. PtaProxy server (both BBRoot and PTARoot are probably required)
+    b. End-user computer (only PtaProxy root certificate is necessary) 
+    c. Blackboard server (I think it may be necessary for normal functioning of BBCert, not sure, i.e. BBRoot certificate is required here) 
+ 2. In Java VM keystore at -Djavax.net.ssl.trustStore location on Blackboard server (Blackboard does not rely on Tomcat during certificate validation, it has to be configured on javax.net.ssl level).
+
+** BBCert
+On Blackboard server in 
+ 1. Personal/Certificates in MMC certificates plugin for Computer account
+ 2. IIS Blackboard web site Propeties/Directory Security/Server Certificate
+
+** PtaCert
+On PtaProxy server in 
+ 1. Personal/Certificates in MMC certificates plugin for Computer account
+ 2. IIS PtaProxy web site Properties/Directory Security/Server Certificate
+
+
+Ñertificates generation initiated with Java-keytool.
+---------------------------------------------------
+Several tools are available for certificate generation, but all of them has some specifics and/or limitations and require using another tools or code snippets for its overcoming. 
+Web comments mentioned several more gui-oriented custom implementations that may be used for certificate generation, but could not succeed with any of them much. Processing with keytool and openssl is a bit tedious, but gives good understanding of actions done.
+
+http://sce.uhcl.edu/yang/teaching/csci4233Fall2008/Creating%20Certificate%20Chain.doc is the best document to start with that I could find in the internet (its copy is saved in pta_proxy\certificates\WebDoc. Its difference from described here scenario is in that it discusses creation of intermediate CA1 and CA2 certificates, in our case doc's rootCA is used directly for signing of serverKey and clientKey.
+
+Summary of the "Creating Certificate Chain.doc" is that keytool with the help of custom program SignCertificate.java (saved in TestCertsKeytool\bin) can generate necessary certificate chain, but it has to be converted to format acceptable by MS technology in order to be imported into Windows certificate store.
+
+Procedure of certificate conversion is described at http://conshell.net/wiki/index.php/Keytool_to_OpenSSL_Conversion_tips (saved in pta_proxy\certificates\WebDoc\ too). And it also uses supplementary code ExportPriv.java (available in TestCertsKeytool\bin) which in turn uses Base64Coder.java (available in TestCertsKeytool\bin too). openssl for windows platform is available at http://www.slproweb.com/products/Win32OpenSSL.html
+
+Generation of certificates is scripted in pta_proxy\certificates\TestCertsKeytool\ in KeyToolRootCert.bat and KeytoolCert.bat. 
+KeyToolRootCert.bat should be run once - it will generate and export to pkcs12 (.pfx extension) RootCert named as RootCA_IDLA_Dev_Java.
+KeytoolCert.bat has to be edited by modifying of CN=PtaProxyTest.com to desired Blackboard and PtaProxy URLs and run twice.
+
+Note: along with writing of this file I found out that mmc certificates plugin seems to accept .crt files generated from direct export from keystore without any following on conversions performed by openssl. IIS interface however accepts only .pfx format generated as last step of bat files. But after importing of certificate with mmc it is already available for selection in IIS from "assign existing certificate" option. Probably openssl processing included in bat files is outdated and not really necessary. 
+
+Tips on responding to prompts of bat files:
+1. Keystore password and certificate passwords - use "changeit" everywhere to minimize confusion, it is default Java keystore password.
+2. Use CN alias for "first and last name?" question, use blanks everywhere else. Not sure if "first and last name?" is really important field used during certificate validation, but test certificates were generated this way.
+3. IMPORTANT: - do not use IP addresses as CN alias, such certificates do not pass validation at least by javax.ssl. Domain name is required. An easiest way to create custom URL mappiing is to add it to WinDir\System32\drivers\etc\hosts file (http://forums.sun.com/thread.jspa?threadID=620276&messageID=3514309).
+
+
+
+Ñertificates generation initiated with MS makecert.
+---------------------------------------------------
+This way of certificate generation was tried before keytool one, but was not successfully completed. Principally final problem was probably just in use of IP address instead of domain as CN name and/or something wrong with setting up of -Djavax.net.ssl.trustStore. Probably some additional conversions with openssl are required here too in order to make root certificate compatible with Java.
+Principal walkthrough is described at http://msdn.microsoft.com/en-us/library/cc949011.aspx. makecert does not create files, but creates certificates directly in the machine certificate store and they have to be exported from there in order to be reused.
+As far as I remember Java did not like enabling of "strong protection" during export, but it is the only thing that I'm able to note for sure... Also there were some play around truststoreType Java option that had to be not "PKCS12" but "JKS".
+Need to re-test this scenario of certificates generation in order to provide clear steps.
+This point is unfinished.
+
+
+Installation of certificates.
+-----------------------------
+Generated *.pfx (without "-pem" in name) (or directly *.crt according to latest findings) certificates are imported into mentioned upper Windows stores with right mouse click and overall procedure is quite intuitive.
+Setting of RootCert for Java can be performed in two ways.
+Tested one was specifying of keystore_IdlaJava_onlyRootCA.jks (it is created as copy of keystore in first steps of KeyToolRootCert.bat) as truststore with 
+wrapper.java.additional.19=-Djavax.net.ssl.trustStore=e:/Project/PassThrough/src/certs/TestCertsJava/keystore_IdlaJava_onlyRootCA.jks
+in blackboard\apps\tomcat\conf\wrapper.conf.
+Another way (not tested) is to add RootCert to java.home/lib/security/jssecacerts which is defaul keystore location (http://onjava.com/onjava/2001/05/03/java_security.html).
+
+
+Debugging
+----------
+Process of validation of certificate at Blackboard can checked with adding of something like 
+wrapper.java.additional.18=-Djavax.net.debug=SSL,handshake,data,trustmanager to blackboard\apps\tomcat\conf\wrapper.conf.
+
+Good picture of SSL log is provided here - http://java.sun.com/j2se/1.5.0/docs/guide/security/jsse/ReadDebug.html (Debugging SSL/TLS Connections).
+
+When analysing validation of certificates on Windows side the only option I could find was using of network traffic sniffer. Used MS Network monitor for debugging.
+
+

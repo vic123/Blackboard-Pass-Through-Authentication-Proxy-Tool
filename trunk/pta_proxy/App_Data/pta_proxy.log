@@ -1,0 +1,20 @@
+2009-12-09 07:59:01,578 187 DEBUG [4] Idla.PtaProxy.GlobalErrorHandler.Init():  - Method entered
+2009-12-09 07:59:01,671 281 INFO [4] Idla.PtaProxy.GlobalErrorHandler.Init():  - Instantiated
+2009-12-09 07:59:19,562 18171 DEBUG [4] Idla.PtaProxy.GlobalErrorHandler.OnError():  - Method entered
+2009-12-09 07:59:19,562 18171 DEBUG [4] Idla.PtaProxy.GlobalErrorHandler.OnError():  - Entered GlobalErrorHandler.OnError
+2009-12-09 07:59:19,578 18187 DEBUG [4] Idla.PtaProxy.GlobalErrorHandler.OnError():  - HttpContext.Current.Request.FilePath: /pta_proxy/Admin/Register.aspx
+2009-12-09 07:59:19,578 18187 DEBUG [4] Idla.PtaProxy.GlobalErrorHandler.OnError():  - HttpContext.Current.Request.ApplicationPath: /pta_proxy
+2009-12-09 08:00:57,500 125 DEBUG [4] Idla.PtaProxy.GlobalErrorHandler.Init():  - Method entered
+2009-12-09 08:00:57,531 156 INFO [4] Idla.PtaProxy.GlobalErrorHandler.Init():  - Instantiated
+2009-12-09 08:02:18,953 125 DEBUG [4] Idla.PtaProxy.GlobalErrorHandler.Init():  - Method entered
+2009-12-09 08:02:18,984 156 INFO [4] Idla.PtaProxy.GlobalErrorHandler.Init():  - Instantiated
+2009-12-09 08:09:31,296 125 DEBUG [4] Idla.PtaProxy.GlobalErrorHandler.Init():  - Method entered
+2009-12-09 08:09:31,328 156 INFO [4] Idla.PtaProxy.GlobalErrorHandler.Init():  - Instantiated
+2009-12-09 08:11:15,125 125 DEBUG [4] Idla.PtaProxy.GlobalErrorHandler.Init():  - Method entered
+2009-12-09 08:11:15,156 156 INFO [4] Idla.PtaProxy.GlobalErrorHandler.Init():  - Instantiated
+2009-12-09 08:11:15,312 312 DEBUG [4] Idla.PtaProxy.GlobalErrorHandler.OnError():  - Method entered
+2009-12-09 08:11:15,312 312 DEBUG [4] Idla.PtaProxy.GlobalErrorHandler.OnError():  - Entered GlobalErrorHandler.OnError
+2009-12-09 08:11:15,312 312 DEBUG [4] Idla.PtaProxy.GlobalErrorHandler.OnError():  - HttpContext.Current.Request.FilePath: /pta_proxy/login.aspx
+2009-12-09 08:11:15,328 328 DEBUG [4] Idla.PtaProxy.GlobalErrorHandler.OnError():  - HttpContext.Current.Request.ApplicationPath: /pta_proxy
+2009-12-09 08:13:46,500 140 DEBUG [4] Idla.PtaProxy.GlobalErrorHandler.Init():  - Method entered
+2009-12-09 08:13:46,531 171 INFO [4] Idla.PtaProxy.GlobalErrorHandler.Init():  - Instantiated

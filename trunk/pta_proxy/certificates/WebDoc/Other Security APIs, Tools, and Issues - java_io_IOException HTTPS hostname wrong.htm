@@ -1,0 +1,565 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
+<!-- saved from url=(0067)http://forums.sun.com/thread.jspa?threadID=620276&messageID=3514309 -->
+<HTML class="regenabled gecko jsenabled gecko jsenabled" 
+xmlns="http://www.w3.org/1999/xhtml"><HEAD><TITLE>Other Security APIs, Tools, and Issues - java.io.IOException: HTTPS hostname wrong</TITLE>
+<META http-equiv=Content-Type content="text/html; charset=iso-8859-1"><LINK 
+href="Other Security APIs, Tools, and Issues - java_io_IOException HTTPS hostname wrong_files/style.css" 
+type=text/css rel=stylesheet><LINK 
+href="Other Security APIs, Tools, and Issues - java_io_IOException HTTPS hostname wrong_files/default.css" 
+type=text/css rel=stylesheet><LINK 
+href="Other Security APIs, Tools, and Issues - java_io_IOException HTTPS hostname wrong_files/default_developer.css" 
+rel=stylesheet><LINK 
+href="Other Security APIs, Tools, and Issues - java_io_IOException HTTPS hostname wrong_files/sr.css" 
+type=text/css rel=stylesheet>
+<SCRIPT language=javascript1.2 
+src="Other Security APIs, Tools, and Issues - java_io_IOException HTTPS hostname wrong_files/sniff.js" 
+type=text/javascript></SCRIPT>
+
+<META content="MSHTML 6.00.2900.5897" name=GENERATOR></HEAD>
+<BODY>
+<TABLE width="100%">
+  <TBODY>
+  <TR>
+    <TD><!-- BEGIN A2 COMPONENT V.8 -->
+      <DIV class=a2v8forums id=a2v8>
+      <DIV class=a2v8w1>
+      <DIV class=a2v8w2>
+      <DIV class=a2v8w3>
+      <UL class=a2v8links>
+        <LI class=a2v8sunlogo><A title=www.sun.com 
+        href="http://www.sun.com/"><SPAN>Sun.com</SPAN></A> </LI>
+        <LI><A title=forums.sun.com 
+        href="http://forums.sun.com/"><SPAN>forums.sun.com</SPAN></A> </LI></UL>
+      <H3 class=listTitle>participate</H3>
+      <FORM action=""><SELECT class=goto><OPTION class=gotoHeading value="" 
+        selected>participate</OPTION> <OPTION 
+        value=http://wikis.sun.com/>wikis</OPTION><OPTION 
+        value=http://blogs.sun.com/>blogs</OPTION><OPTION 
+        value=http://planets.sun.com/>planets</OPTION><OPTION 
+        value=http://forums.sun.com/>forums</OPTION><OPTION 
+        value=http://mediacast.sun.com/>mediacast</OPTION></SELECT></FORM>
+      <DIV class=a2v8x1></DIV></DIV></DIV></DIV></DIV><!-- END A2 COMPONENT V.8 --></TD></TR></TBODY></TABLE><!-- BEGIN breadcrumbs -->
+<DIV class=breadcrumb><NOBR><A href="http://forums.sun.com/">Sun Forums</A> 
+&gt;</NOBR> <NOBR><A 
+href="http://forums.sun.com/category.jspa?categoryID=15">Security</A> 
+&gt;</NOBR> <NOBR><A 
+href="http://forums.sun.com/forum.jspa?forumID=60&amp;start=0">Other Security 
+APIs, Tools, and Issues</A> &gt;</NOBR> </DIV><!-- END breadcrumbs --><BR>
+<DIV class=pagetitle>Other Security APIs, Tools, and Issues - 
+java.io.IOException: HTTPS hostname wrong</DIV>
+<TABLE cellSpacing=0 cellPadding=0 width="100%"><!-- CONTENT & NAV TABLE -->
+  <TBODY>
+  <TR>
+    <TD vAlign=top><!-- MAIN CONTENT --><!--startindex--><!-- BEGIN WRAPPER TABLE, 1 COLUMN, MAIN -->
+      <TABLE cellSpacing=10 cellPadding=0 width="100%" border=0>
+        <TBODY>
+        <TR>
+          <TD vAlign=top width="100%"><LINK title="RSS Summary Feed" 
+            href="http://forums.sun.com/rss/rssmessages.jspa?threadID=620276" 
+            type=application/rss+xml rel=alternate><LINK title="RSS Full Feed" 
+            href="http://forums.sun.com/rss/rssmessages.jspa?threadID=620276&amp;full=true" 
+            type=application/rss+xml rel=alternate><!-- BEGIN MAIN CONTENT -->
+            <TABLE class=vtop cellSpacing=0 cellPadding=4 width="100%" 
+              border=0><TBODY>
+              <TR>
+                <TD></TD></TR>
+              <TR>
+                <TD></TD></TR>
+              <TR>
+                <TD><A 
+                  href="http://forums.sun.com/forum.jspa?forumID=60">&lt;&lt; 
+                  &nbsp; Back to Forum</A> &nbsp;| &nbsp; <A 
+                  href="http://developers.sun.com/contact/feedback.jsp?referer=http://forums.sun.com?forumID=60&amp;category=sdn&amp;mailsubject=Forums%20or%20Community">Give 
+                  us Feedback </A></TD>
+                <TD align=right><!--  BEGIN VTI2 PAGINATION COMPONENT, variation 2 without number links --><!--  END VTI2 PAGINATION COMPONENT, variation 2 without number links --></TD></TR></TBODY></TABLE><!-- BEGIN G15 GENERIC CONTENT TABLE -->
+            <TABLE class=vtop cellSpacing=0 cellPadding=4 width="100%" 
+            bgColor=#507c9a border=0>
+              <TBODY>
+              <TR>
+                <TD>
+                  <TABLE class=vtop cellSpacing=0 cellPadding=2 width="100%" 
+                  border=0>
+                    <TBODY>
+                    <TR bgColor=#507c9a><!-- BEGIN DUKE DOLLARS -->
+                      <TD colSpan=2>
+                        <TABLE width="100%" border=0>
+                          <TBODY>
+                          <TR>
+                            <TD>
+                              <DIV class=pad5x10><SPAN 
+                              style="COLOR: #fff"></SPAN></DIV></TD>
+                            <TD align=right>
+                              <DIV class=pad5x10><SPAN style="COLOR: #fff">This 
+                              topic has 4 replies on 1 page. 
+                          </SPAN></DIV></TD></TR></TBODY></TABLE></TD></TR>
+                    <TR bgColor=#507c9a>
+                      <TD align=right colSpan=2>
+                        <DIV class=pad5x10><SPAN style="COLOR: #fff"><!-- BEGIN  Move Ability for moderators --><!-- END move ability for moderators --><IMG 
+                        height=12 alt=" " hspace=4 
+                        src="Other Security APIs, Tools, and Issues - java_io_IOException HTTPS hostname wrong_files/ic_email.gif" 
+                        width=14 vspace=1 border=0><A 
+                        href="http://forums.sun.com/emailfriend!default.jspa?threadID=620276"><FONT 
+                        color=#ffffff>E-mail this Topic</FONT></A> &nbsp; <IMG 
+                        alt=" " hspace=4 
+                        src="Other Security APIs, Tools, and Issues - java_io_IOException HTTPS hostname wrong_files/ic_eye.gif" 
+                        border=0> <A 
+                        href="http://forums.sun.com/watches!add.jspa?forumID=60&amp;threadID=620276"><FONT 
+                        color=#ffffff>Watch this topic</FONT></A> &nbsp; 
+                        </SPAN></DIV></TD></TR>
+                    <DIV class=jive-message-list></DIV>
+                    <TR bgColor=#e4ecf0>
+                      <TD noWrap width="20%">
+                        <DIV class=pad5x10><IMG title="Dukes Earned 0" 
+                        src="Other Security APIs, Tools, and Issues - java_io_IOException HTTPS hostname wrong_files/bronze-star.gif"> 
+                        <A 
+                        href="http://forums.sun.com/profile.jspa?userID=527574" 
+                        ?>Raghavan_Peketi</A> <BR>Posts:2 <BR>Registered: 
+                        4/22/05 </DIV></TD><!-- END Author Name or Guest -->
+                      <TD width="60%">
+                        <DIV class=pad5x10><B><A 
+                        name=3490627></A>java.io.IOException: HTTPS hostname 
+                        wrong &nbsp;&nbsp; <BR><A 
+                        href="http://forums.sun.com/thread.jspa?messageID=3490627#3490627">Apr 
+                        22, 2005 8:48 AM 
+                        </A></B><BR><!-- start tags stuff --></DIV></TD><!-- END Subject -->
+                      <TD noWrap align=right width="20%">
+                        <DIV class=pad5x10><A 
+                        title="Click to email this message" 
+                        href="http://forums.sun.com/emailmessage!default.jspa?messageID=3490627"><IMG 
+                        height=12 alt="Click to email this message" hspace=4 
+                        src="Other Security APIs, Tools, and Issues - java_io_IOException HTTPS hostname wrong_files/ic_email.gif" 
+                        width=14 vspace=1 border=0></A> <BR><BR>
+                        <FORM action=post!reply.jspa><INPUT type=hidden 
+                        value=3490627 name=messageID> <INPUT class=buttonblue onmouseover="this.style.color='#fbe249';" onmouseout="this.style.color='#FFF';" type=submit value="Reply »"></FORM><BR><BR><!--
+    <a href="javascript:void(0)" onclick="window.open('unfiltered.jspa?messageID=3490627', 'Welcome', 'width=500, height=500, menubar=yes, scrollbars=yes')">View Unfiltered</a>
+--></DIV></TD><!-- END REPLY Button --></TR><!-- END Heading Row --><!-- Begin message row -->
+                    <TR class=white>
+                      <TD>
+                        <DIV class=pad5x10>&nbsp;</DIV></TD>
+                      <TD>
+                        <DIV class=pad5x10>Hello <BR><BR>I was trying to open a 
+                        connection to secure URL and post content to 
+                        it.<BR><BR>I got the following 
+                        exception:<BR><BR>java.io.IOException: HTTPS hostname 
+                        wrong: should be &lt;165.112.121.195&gt;<BR>at 
+                        sun.net.www.protocol.https.HttpsClient.b(DashoA12275)<BR><BR>Its 
+                        apparantly because the connection is 
+                        <BR>com.sun.net.ssl.internal.www.protocol.https.DelegateHttpsURLConnection<BR>not 
+                        <BR>sun.net.ssl.www.protocol.DelegateHttpsURLConnection<BR><BR>I 
+                        tried setting the system 
+                        property<BR>System.setProperty("java.protocol.handler.pkgs","sun.net.www.protocol");<BR>to 
+                        force JVM to use the newer Delegate.<BR>Its still doent 
+                        work. I use JDK 1.4.2_05. I deploy my application in 
+                        OC4J 9.0.4<BR><BR>Interesting thing is, I use this code 
+                        in two different applications, it works in<BR>one and 
+                        doen't work in one. Both containers use same JDK. Both 
+                        are OC4J<BR>containers.<BR><BR>Any thoughts? I would 
+                        appreciate.<BR><BR>thanks<BR>Raghavan </DIV></TD>
+                      <TD>
+                        <DIV class=pad5x10>&nbsp;</DIV></TD></TR>
+                    <DIV></DIV>
+                    <DIV class=jive-message-list></DIV>
+                    <TR bgColor=#e4ecf0>
+                      <TD noWrap width="20%">
+                        <DIV class=pad5x10><IMG title="Dukes Earned 10" 
+                        src="Other Security APIs, Tools, and Issues - java_io_IOException HTTPS hostname wrong_files/bronze-star.gif"> 
+                        <A 
+                        href="http://forums.sun.com/profile.jspa?userID=193722" 
+                        ?>rkollu</A> <BR>Posts:12 <BR>Registered: 9/20/97 
+                      </DIV></TD><!-- END Author Name or Guest -->
+                      <TD width="60%">
+                        <DIV class=pad5x10><B><A name=3514309></A>Re: 
+                        java.io.IOException: HTTPS hostname wrong &nbsp;&nbsp; 
+                        <BR><A 
+                        href="http://forums.sun.com/thread.jspa?messageID=3514309#3514309">Apr 
+                        27, 2005 7:14 AM </A>(reply 1 of 4) &nbsp;(In reply to 
+                        <A 
+                        href="http://forums.sun.com/thread.jspa?messageID=3490627#3490627">original 
+                        post</A> ) </B><BR><!-- start tags stuff --></DIV></TD><!-- END Subject -->
+                      <TD noWrap align=right width="20%">
+                        <DIV class=pad5x10><A 
+                        title="Click to email this message" 
+                        href="http://forums.sun.com/emailmessage!default.jspa?messageID=3514309"><IMG 
+                        height=12 alt="Click to email this message" hspace=4 
+                        src="Other Security APIs, Tools, and Issues - java_io_IOException HTTPS hostname wrong_files/ic_email.gif" 
+                        width=14 vspace=1 border=0></A> <BR><BR>
+                        <FORM action=post!reply.jspa><INPUT type=hidden 
+                        value=3514309 name=messageID> <INPUT class=buttonblue onmouseover="this.style.color='#fbe249';" onmouseout="this.style.color='#FFF';" type=submit value="Reply »"></FORM><BR><BR><!--
+    <a href="javascript:void(0)" onclick="window.open('unfiltered.jspa?messageID=3514309', 'Welcome', 'width=500, height=500, menubar=yes, scrollbars=yes')">View Unfiltered</a>
+--></DIV></TD><!-- END REPLY Button --></TR><!-- END Heading Row --><!-- Begin message row -->
+                    <TR class=white>
+                      <TD>
+                        <DIV class=pad5x10>&nbsp;</DIV></TD>
+                      <TD>
+                        <DIV class=pad5x10>The exception message "HTTPS hostname 
+                        wrong" implies the hostname in the URL is not same as 
+                        the CN in the server certificate. I can think of two 
+                        options :<BR>- Change the URL to match the certificate 
+                        name OR<BR>- Implement 
+                        <B>javax.net.ssl.HostnameVerifier</B> </DIV></TD>
+                      <TD>
+                        <DIV class=pad5x10>&nbsp;</DIV></TD></TR>
+                    <DIV></DIV>
+                    <DIV class=jive-message-list></DIV>
+                    <TR bgColor=#e4ecf0>
+                      <TD noWrap width="20%">
+                        <DIV class=pad5x10><IMG title="Dukes Earned 0" 
+                        src="Other Security APIs, Tools, and Issues - java_io_IOException HTTPS hostname wrong_files/bronze-star.gif"> 
+                        <A 
+                        href="http://forums.sun.com/profile.jspa?userID=530442" 
+                        ?>rmgaddy</A> <BR>Posts:1 <BR>Registered: 5/4/05 
+                      </DIV></TD><!-- END Author Name or Guest -->
+                      <TD width="60%">
+                        <DIV class=pad5x10><B><A name=3546206></A>Re: 
+                        java.io.IOException: HTTPS hostname wrong &nbsp;&nbsp; 
+                        <BR><A 
+                        href="http://forums.sun.com/thread.jspa?messageID=3546206#3546206">May 
+                        4, 2005 2:23 PM </A>(reply 2 of 4) &nbsp;(In reply to <A 
+                        href="http://forums.sun.com/thread.jspa?messageID=3514309#3514309">#1 
+                        </A>) </B><BR><!-- start tags stuff --></DIV></TD><!-- END Subject -->
+                      <TD noWrap align=right width="20%">
+                        <DIV class=pad5x10><A 
+                        title="Click to email this message" 
+                        href="http://forums.sun.com/emailmessage!default.jspa?messageID=3546206"><IMG 
+                        height=12 alt="Click to email this message" hspace=4 
+                        src="Other Security APIs, Tools, and Issues - java_io_IOException HTTPS hostname wrong_files/ic_email.gif" 
+                        width=14 vspace=1 border=0></A> <BR><BR>
+                        <FORM action=post!reply.jspa><INPUT type=hidden 
+                        value=3546206 name=messageID> <INPUT class=buttonblue onmouseover="this.style.color='#fbe249';" onmouseout="this.style.color='#FFF';" type=submit value="Reply »"></FORM><BR><BR><!--
+    <a href="javascript:void(0)" onclick="window.open('unfiltered.jspa?messageID=3546206', 'Welcome', 'width=500, height=500, menubar=yes, scrollbars=yes')">View Unfiltered</a>
+--></DIV></TD><!-- END REPLY Button --></TR><!-- END Heading Row --><!-- Begin message row -->
+                    <TR class=white>
+                      <TD>
+                        <DIV class=pad5x10>&nbsp;</DIV></TD>
+                      <TD>
+                        <DIV class=pad5x10>Another option is to alias the IP 
+                        address with the CN in the cert file via the etc/hosts 
+                        file. For example if your CN is set to "foo" and the ip 
+                        address you are trying to use is 127.0.0.1 you can place 
+                        a line like below in your etc/hosts 
+                        file:<BR><BR>127.0.0.1 foo<BR><BR>Then just use "foo" in 
+                        the URL in place of 127.0.0.1.<BR><BR>That is what I did 
+                        and it worked for me. </DIV></TD>
+                      <TD>
+                        <DIV class=pad5x10>&nbsp;</DIV></TD></TR>
+                    <DIV></DIV>
+                    <DIV class=jive-message-list></DIV>
+                    <TR bgColor=#e4ecf0>
+                      <TD noWrap width="20%">
+                        <DIV class=pad5x10><IMG title="Dukes Earned 0" 
+                        src="Other Security APIs, Tools, and Issues - java_io_IOException HTTPS hostname wrong_files/bronze-star.gif"> 
+                        <A 
+                        href="http://forums.sun.com/profile.jspa?userID=358094" 
+                        ?>splat30splat</A> <BR>Posts:1 <BR>Registered: 12/4/98 
+                        </DIV></TD><!-- END Author Name or Guest -->
+                      <TD width="60%">
+                        <DIV class=pad5x10><B><A name=3589104></A>Re: 
+                        java.io.IOException: HTTPS hostname wrong &nbsp;&nbsp; 
+                        <BR><A 
+                        href="http://forums.sun.com/thread.jspa?messageID=3589104#3589104">May 
+                        15, 2005 11:53 AM </A>(reply 3 of 4) &nbsp;(In reply to 
+                        <A 
+                        href="http://forums.sun.com/thread.jspa?messageID=3546206#3546206">#2 
+                        </A>) </B><BR><!-- start tags stuff --></DIV></TD><!-- END Subject -->
+                      <TD noWrap align=right width="20%">
+                        <DIV class=pad5x10><A 
+                        title="Click to email this message" 
+                        href="http://forums.sun.com/emailmessage!default.jspa?messageID=3589104"><IMG 
+                        height=12 alt="Click to email this message" hspace=4 
+                        src="Other Security APIs, Tools, and Issues - java_io_IOException HTTPS hostname wrong_files/ic_email.gif" 
+                        width=14 vspace=1 border=0></A> <BR><BR>
+                        <FORM action=post!reply.jspa><INPUT type=hidden 
+                        value=3589104 name=messageID> <INPUT class=buttonblue onmouseover="this.style.color='#fbe249';" onmouseout="this.style.color='#FFF';" type=submit value="Reply »"></FORM><BR><BR><!--
+    <a href="javascript:void(0)" onclick="window.open('unfiltered.jspa?messageID=3589104', 'Welcome', 'width=500, height=500, menubar=yes, scrollbars=yes')">View Unfiltered</a>
+--></DIV></TD><!-- END REPLY Button --></TR><!-- END Heading Row --><!-- Begin message row -->
+                    <TR class=white>
+                      <TD>
+                        <DIV class=pad5x10>&nbsp;</DIV></TD>
+                      <TD>
+                        <DIV class=pad5x10>I tried setting a hostname in the 
+                        /etc/hosts file as an alias but my java program is still 
+                        doing the dns lookup from the name server instead of 
+                        /etc/hosts. I tried to force the JVM to user /etc/hosts 
+                        by using java property 
+                        "-Dsun.net.spi.namese<BR>rvice.provider.1=default" and 
+                        also tried 
+                        "-Dsun.net.spi.namese<BR>rvice.provider.1=file,dns" but 
+                        the problem wrong host name error still occurs. 
+                        <BR><BR>I am trying to find a way of forcing java to 
+                        read the /etc/host entry in stead of making a code 
+                        change in java. <BR><BR>Any ideas?? </DIV></TD>
+                      <TD>
+                        <DIV class=pad5x10>&nbsp;</DIV></TD></TR>
+                    <DIV></DIV>
+                    <DIV class=jive-message-list></DIV>
+                    <TR bgColor=#e4ecf0>
+                      <TD noWrap width="20%">
+                        <DIV class=pad5x10><IMG title="Dukes Earned 0" 
+                        src="Other Security APIs, Tools, and Issues - java_io_IOException HTTPS hostname wrong_files/bronze-star.gif"> 
+                        <A 
+                        href="http://forums.sun.com/profile.jspa?userID=543172" 
+                        ?>gaxunil1</A> <BR>Posts:1 <BR>Registered: 6/28/05 
+                      </DIV></TD><!-- END Author Name or Guest -->
+                      <TD width="60%">
+                        <DIV class=pad5x10><B><A name=3756830></A>Re: 
+                        java.io.IOException: HTTPS hostname wrong &nbsp;&nbsp; 
+                        <BR><A 
+                        href="http://forums.sun.com/thread.jspa?messageID=3756830#3756830">Jun 
+                        28, 2005 9:01 AM </A>(reply 4 of 4) &nbsp;(In reply to 
+                        <A 
+                        href="http://forums.sun.com/thread.jspa?messageID=3589104#3589104">#3 
+                        </A>) </B><BR><!-- start tags stuff --></DIV></TD><!-- END Subject -->
+                      <TD noWrap align=right width="20%">
+                        <DIV class=pad5x10><A 
+                        title="Click to email this message" 
+                        href="http://forums.sun.com/emailmessage!default.jspa?messageID=3756830"><IMG 
+                        height=12 alt="Click to email this message" hspace=4 
+                        src="Other Security APIs, Tools, and Issues - java_io_IOException HTTPS hostname wrong_files/ic_email.gif" 
+                        width=14 vspace=1 border=0></A> <BR><BR>
+                        <FORM action=post!reply.jspa><INPUT type=hidden 
+                        value=3756830 name=messageID> <INPUT class=buttonblue onmouseover="this.style.color='#fbe249';" onmouseout="this.style.color='#FFF';" type=submit value="Reply »"></FORM><BR><BR><!--
+    <a href="javascript:void(0)" onclick="window.open('unfiltered.jspa?messageID=3756830', 'Welcome', 'width=500, height=500, menubar=yes, scrollbars=yes')">View Unfiltered</a>
+--></DIV></TD><!-- END REPLY Button --></TR><!-- END Heading Row --><!-- Begin message row -->
+                    <TR class=white>
+                      <TD>
+                        <DIV class=pad5x10>&nbsp;</DIV></TD>
+                      <TD>
+                        <DIV class=pad5x10>Thanks for the info, changing the CN 
+                        did the trick for me.<BR>I was just testing on 
+                        localhost, so specifying a CN of localhost in the cert 
+                        did the trick. </DIV></TD>
+                      <TD>
+                        <DIV class=pad5x10>&nbsp;</DIV></TD></TR>
+                    <DIV></DIV></TBODY></TABLE></TD></TR></TBODY></TABLE>
+            <TABLE class=vtop cellSpacing=0 cellPadding=4 width="100%" 
+            bgColor=#507c9a border=0>
+              <TBODY>
+              <TR>
+                <TD>
+                  <TABLE class=vtop cellSpacing=0 cellPadding=2 width="100%" 
+                  border=0>
+                    <TBODY>
+                    <TR bgColor=#507c9a>
+                      <TD align=right>
+                        <DIV class=pad5x10><SPAN style="COLOR: #fff">This topic 
+                        has 4 replies on 1 page. 
+                  </SPAN></DIV></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE><A 
+            href="http://forums.sun.com/forum.jspa?forumID=60">Back to Forum</A> 
+            <BR><SPAN class=sp10>&nbsp;</SPAN><BR><A 
+            href="http://wikis.sun.com/display/SunForums/Sun+Forums+Code+of+Conduct">Read 
+            the Developer Forums Code of Conduct </A><BR><BR><IMG height=12 
+            alt="Click to email this message" hspace=4 
+            src="Other Security APIs, Tools, and Issues - java_io_IOException HTTPS hostname wrong_files/ic_email.gif" 
+            width=14 vspace=1 border=0> Email this Topic <BR><BR><IMG height=16 
+            src="Other Security APIs, Tools, and Issues - java_io_IOException HTTPS hostname wrong_files/edit-16x16.gif" 
+            width=16 border=0> Edit this Topic <!-- END G15 GENERIC CONTENT TABLE --></TD></TR></TBODY></TABLE><!--stopindex--></TD><!-- END MAIN CONTENT -->
+    <DIV></DIV><!-- END MAIN CONTENT -->
+    <TD vAlign=top align=right width=170><!-- RIGHT NAV --><!-- BEGIN AD PORTION --><!-- END AD PORTION -->
+      <TABLE cellSpacing=0 cellPadding=6 border=0>
+        <TBODY>
+        <TR>
+          <TD vAlign=top width=170><!-- BEGIN USER ALERT --><!-- END USER ALERT --><!-- BEGIN E15 COMPONENT V.0 -->
+            <DIV class="e15 e15v2">
+            <DIV class=e15w1>
+            <DIV class=e15w2>
+            <H3>Sun Forums </H3>
+            <H5>Welcome</H5>
+            <UL>
+              <LI><A 
+              href="http://forums.sun.com/login!withRedirect.jspa?referrer=http%3A%2F%2Fforums.sun.com%2Fthread.jspa%3FthreadID%3D620276%26messageID%3D3514309">Login</A> 
+
+              <LI><A href="http://forums.sun.com/editwatches!default.jspa">Watch 
+              List</A> 
+              <LI><A 
+              href="http://wikis.sun.com/display/SunForums/Duke+Stars+Program+Overview">Duke 
+              Stars Program</A> 
+              <LI><A 
+              href="http://wikis.sun.com/display/SunForums/Tips">Beginners Quick 
+              Start</A> 
+              <LI><A href="http://forums.sun.com/myforums.jspa">My Forums</A> 
+              <LI><A 
+              href="http://developers.sun.com/contact/feedback.jsp?referer=http://forums.sun.com&amp;category=sdn&amp;mailsubject=Forums%20or%20Community">Feedback 
+              </A>
+              <LI><A 
+              href="http://wikis.sun.com/display/SunForums/Forums.sun.com+FAQ">FAQ</A> 
+
+              <LI width="100%"><A 
+              href="http://wikis.sun.com/display/SunForums/Sun+Forums+Code+of+Conduct">Code 
+              of Conduct</A> 
+</LI></UL><!-- END E15 COMPONENT --></DIV></DIV></DIV><!-- BEGIN SEARCH BOX --><!-- DISPLAYS NOT FOR MAIN PAGE -->
+            <DIV class=e5>
+            <TABLE class=blue1 cellSpacing=0 cellPadding=0 width="100%" 
+border=0>
+              <TBODY>
+              <TR>
+                <TD>
+                  <TABLE class=white1 cellSpacing=0 cellPadding=0 width="100%" 
+                  border=0>
+                    <FORM action=/sunsearch.jspa method=post>
+                    <TBODY>
+                    <TR>
+                      <TD>
+                        <DIV class=pad6><LABEL for=f7text1><B>Search 
+                        Forums</B></LABEL></DIV></TD></TR>
+                    <TR>
+                      <TD>
+                        <DIV class=cellpadbottom>
+                        <TABLE cellSpacing=0 cellPadding=0 border=0>
+                          <TBODY>
+                          <TR>
+                            <TD vAlign=top><INPUT class=medium id=f7text1 
+                              onfocus="if( this.value==this.defaultValue ) this.value='';" 
+                              align=top size=6 value=Search name=qt></TD>
+                            <TD>&nbsp;&nbsp;</TD><INPUT type=hidden 
+                            value=inmeta:forum=60 name=inmeta> 
+                            <TD vAlign=top><INPUT class=hotbutton onmouseover="this.style.color='#fbe249';" onmouseout="this.style.color='#FFF';" type=submit value=&nbsp;»&nbsp; border=0></TD></TR></TBODY></TABLE></DIV></TD></TR></FORM>
+                    <TR>
+                      <TD>
+                        <DIV class=cellpadbottom><SPAN 
+                        class=rightarrowblue>»</SPAN>&nbsp;&nbsp;<A 
+                        href="http://search.sun.com/main/index.jsp">Advanced 
+                        Search</A></DIV></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE><SPAN 
+            class=sp10>&nbsp;</SPAN><BR></DIV><!-- END SEARCH BOX --><!-- Ad Box -->
+            <SCRIPT type=text/javascript><!--//<![CDATA[
+   var m3_u = (location.protocol=='https:'?'https://ads.sun.com/ads/www/delivery/ajs.php':'http://ads.sun.com/ads/www/delivery/ajs.php');
+   var m3_r = Math.floor(Math.random()*99999999999);
+   if (!document.MAX_used) document.MAX_used = ',';
+   document.write ("<scr"+"ipt type='text/javascript' src='"+m3_u);
+   document.write ("?zoneid=585");
+   document.write ('&amp;cb=' + m3_r);
+   if (document.MAX_used != ',') document.write ("&amp;exclude=" + document.MAX_used);
+   document.write (document.charset ? '&amp;charset='+document.charset : (document.characterSet ? '&amp;charset='+document.characterSet : ''));
+   document.write ("&amp;loc=" + escape(window.location));
+   if (document.referrer) document.write ("&amp;referer=" + escape(document.referrer));
+   if (document.context) document.write ("&context=" + escape(document.context));
+   if (document.mmm_fo) document.write ("&amp;mmm_fo=1");
+   document.write ("'><\/scr"+"ipt>");
+//]]>--></SCRIPT>
+            <NOSCRIPT><A 
+            href="http://ads.sun.com/ads/www/delivery/ck.php?n=a4223322&amp;cb=555" 
+            target=_blank><IMG alt="" 
+            src="Other Security APIs, Tools, and Issues - java_io_IOException HTTPS hostname wrong_files/avw.gif" 
+            border=0></A></NOSCRIPT> <!-- End Ad Box --><!-- BEGIN SPOTLIGHT ALERT -->
+            <DIV class=e2>
+            <TABLE class=navblue cellSpacing=0 cellPadding=8 width="100%" 
+            border=0>
+              <TBODY>
+              <TR>
+                <TD>
+                  <TABLE class=vatop cellSpacing=0 cellPadding=0 width="100%" 
+                  border=0>
+                    <TBODY>
+                    <TR>
+                      <TD colSpan=2><B>Site Upgrade</B><BR><A 
+                        href="http://forums.sun.com/thread.jspa?threadID=5413241">Forums 
+                        7.1.8</A> was deployed Oct 26th. The release consists of 
+                        minor fixes &amp; a few enhancements. 
+                  </TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE><SPAN 
+            class=sp10>&nbsp;</SPAN><BR></DIV><!-- END SPOTLIGHT ALERT --><!-- BEGIN E15 COMPONENT V.0 -->
+            <DIV class="e15 e15v2">
+            <DIV class=e15w1>
+            <DIV class=e15w2><!-- BEGIN STATISTICS LINKS -->
+            <H5>Forums Statistics</H5>
+            <UL ul 
+            <><!-- END STATISTICS --><!-- END E15 COMPONENT --></UL></DIV></DIV></DIV><BR><!-- BEGIN E15 COMPONENT V.0 -->
+            <DIV class="e15 e15v2">
+            <DIV class=e15w1>
+            <DIV class=e15w2><!-- BEGIN ABOUT SUN FORUMS -->
+            <H5>About Sun forums</H5>
+            <UL>
+              <LI>
+              <P>Sun Forums is a large collection of user generated discussions. 
+              It is here to help you ask questions, find answers, and 
+              participate in discussions.</P>
+              <P>Check out our guide on <A 
+              href="http://wikis.sun.com/display/SunForums/Tips">Getting started 
+              with Sun Forums</A> for a full walkthrough of how to best leverage 
+              the benefits of this community.</P></LI></UL><!-- END ABOUT SUN FORUMS --></DIV></DIV></DIV><!-- END e15 components --></TD></TR></TBODY></TABLE></END 
+      table nav side></TD><!-- END RIGHT NAV--></TR></TBODY></TABLE><!-- END CONTENT & NAV TABLE -->
+<SCRIPT language=JavaScript 
+src="Other Security APIs, Tools, and Issues - java_io_IOException HTTPS hostname wrong_files/s_code_remote.js"></SCRIPT>
+
+<TABLE>
+  <TBODY>
+  <TR>
+    <TD></TD></TR>
+  <TR>
+    <TD vAlign=bottom><A href="http://www.jivesoftware.com/poweredby/" 
+      target=_new><IMG height=24 alt="Powered by Jive Forums" 
+      src="Other Security APIs, Tools, and Issues - java_io_IOException HTTPS hostname wrong_files/ic_jive_forums.gif" 
+      width=74 border=0> </A></TD></TR></TBODY></TABLE><!-- END RIGHT COLUMN COMPONENTS --><BR><IMG 
+height=1 alt=" " 
+src="Other Security APIs, Tools, and Issues - java_io_IOException HTTPS hostname wrong_files/a.gif" 
+width=170 border=0></TD></TR> <TR><TD valign="bottom" rowspan="2"><IMG height=1 
+alt=" " 
+src="Other Security APIs, Tools, and Issues - java_io_IOException HTTPS hostname wrong_files/a.gif" 
+width=170 border=0><BR><!--  BEGIN CELL FOR OPTIONAL MASTHEAD CAPTION --><!--  END CELL FOR OPTIONAL MASTHEAD CAPTION --></TD></TR><!-- END SPACER ROW --></TABLE><!-- END WRAPPER TABLE, 3 COLUMN, LEFT/MAIN/RIGHT --><!-- BEGIN VNV5 FOOTER  -->
+<TABLE cellSpacing=10 cellPadding=0 width="100%" border=0>
+  <TBODY>
+  <TR>
+    <TD>
+      <TABLE class=vatop cellSpacing=0 cellPadding=0 width="100%" border=0>
+        <TBODY>
+        <TR>
+          <TD class=grey3 vAlign=top colSpan=4><IMG height=2 alt="" 
+            src="Other Security APIs, Tools, and Issues - java_io_IOException HTTPS hostname wrong_files/a.gif" 
+            width=1 border=0></TD></TR>
+        <TR>
+          <TD><IMG height=1 alt="" 
+            src="Other Security APIs, Tools, and Issues - java_io_IOException HTTPS hostname wrong_files/a.gif" 
+            width=190 border=0><BR><A href="http://www.sun.com/"><IMG height=29 
+            alt="" 
+            src="Other Security APIs, Tools, and Issues - java_io_IOException HTTPS hostname wrong_files/logo_sun_small_sdn.gif" 
+            width=61 vspace=5 border=0></A></TD>
+          <TD vAlign=top width="100%"><IMG height=1 alt="" 
+            src="Other Security APIs, Tools, and Issues - java_io_IOException HTTPS hostname wrong_files/a.gif" 
+            width=350 border=0><BR>
+            <DIV class=footer><A 
+            href="http://www.sun.com/communities/guidelines.jsp">Sun Guidelines 
+            for Public Discourse</A> &nbsp;|&nbsp; <A 
+            href="http://developers.sun.com/global/aboutsun.html">About Sun</A> 
+            &nbsp;|&nbsp; <A 
+            href="http://developers.sun.com/global/aboutsdn.html">About This 
+            Site</A> &nbsp;|&nbsp; <A 
+            href="http://developers.sun.com/global/newsletters.html">Newsletters</A> 
+            &nbsp;|&nbsp; <A 
+            href="http://developers.sun.com/global/contact.html">Contact Us</A> 
+            &nbsp;|&nbsp; <A 
+            href="http://developers.sun.com/global/employment.html">Employment</A><BR><A 
+            href="http://developers.sun.com/global/howtobuy.html">How to Buy</A> 
+            &nbsp;|&nbsp; <A 
+            href="http://developers.sun.com/global/licensing.html">Licensing</A> 
+            &nbsp;|&nbsp; <A 
+            href="http://developers.sun.com/global/termsofuse.html">Terms of 
+            Use</A> &nbsp;|&nbsp; <A 
+            href="http://developers.sun.com/global/privacy.html">Privacy</A> 
+            &nbsp;|&nbsp; <A 
+            href="http://developers.sun.com/global/trademarks.html">Trademarks</A> 
+            <BR><SPAN class=sp10>&nbsp;</SPAN><BR><BR><SPAN 
+            class=sp10>&nbsp;</SPAN><BR>Copyright <SPAN class=cssDate 
+            id=copyDate></SPAN>Sun Microsystems, Inc. </DIV></TD>
+          <TD><IMG height=1 alt="" 
+            src="Other Security APIs, Tools, and Issues - java_io_IOException HTTPS hostname wrong_files/a.gif" 
+            width=40 border=0></TD>
+          <TD vAlign=top>
+            <DIV class=footer><B><A 
+            href="http://developers.sun.com/global/aboutsdn.html">A Sun 
+            Developer Network Site</A></B></DIV>
+            <DIV class=footer><IMG height=1 alt="" 
+            src="Other Security APIs, Tools, and Issues - java_io_IOException HTTPS hostname wrong_files/a.gif" 
+            width=170 border=0><BR>Unless otherwise licensed, code in all 
+            technical manuals herein (including articles, FAQs, samples) is 
+            provided under this <A 
+            href="http://developers.sun.com/global/berkeley_license.html">License</A>. 
+            <BR><SPAN class=sp5>&nbsp;</SPAN><BR><A 
+            href="http://developers.sun.com/global/rss_sdn.html"><IMG height=14 
+            alt=XML 
+            src="Other Security APIs, Tools, and Issues - java_io_IOException HTTPS hostname wrong_files/button_xml.gif" 
+            width=36 align=top border=0></A>&nbsp;<A 
+            href="http://developers.sun.com/global/content_feeds.html">Content 
+            Feeds</A> </DIV></TD></TR>
+        <TR>
+          <TD class=grey3 vAlign=top colSpan=4><IMG height=2 alt="" 
+            src="Other Security APIs, Tools, and Issues - java_io_IOException HTTPS hostname wrong_files/a.gif" 
+            width=1 border=0></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE><!-- END VNV5 FOOTER -->
+<DIV></DIV><!-- end of "a0 a0v1" div --></TD></TR></TABLE></TABLE></BODY></HTML>
